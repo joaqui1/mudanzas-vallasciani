@@ -81,14 +81,12 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-background" />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-4">
-            <Badge
-              variant="secondary"
-              className="text-sm px-4 py-2 bg-white/20 text-white border border-white/30 rounded-full font-semibold backdrop-blur-sm"
-            >
-              +35 años de experiencia
-            </Badge>
-          </div>
+          <Badge
+            variant="secondary"
+            className="mb-2 text-xl px-8 py-3 bg-white/20 text-white border-white/30 font-semibold"
+          >
+            +35 años de experiencia
+          </Badge>
           <h2 className="font-geist text-5xl md:text-7xl font-bold text-white mb-4">
             Mudanzas Vallasciani
           </h2>
@@ -425,21 +423,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-
-      {/* Botón de WhatsApp flotante */}
-      {showButton && (
-        <div className="fixed bottom-6 right-6 z-50 animate-in fade-in duration-300">
-          <a
-            href="https://wa.me/5492932635701?text=Hola%20Vallasciani%2C%20quiero%20pedir%20un%20presupuesto%20de%20mudanza."
-            target="_blank"
-            rel="noreferrer noopener"
-            className="flex items-center justify-center w-14 h-14 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors"
-            aria-label="Contactar por WhatsApp"
-          >
-            <MessageCircle className="h-7 w-7" />
-          </a>
-        </div>
-      )}
     </div>
   )
 }

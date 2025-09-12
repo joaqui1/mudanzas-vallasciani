@@ -1,18 +1,10 @@
 "use client"
 import { useEffect, useState } from "react"
-import { MessageCircle, Package, Star, Phone, Mail, MapPin, CheckCircle, Truck, Shield, Users } from "lucide-react"
+import { MessageCircle, Package, Star } from "lucide-react"
 
 export default function HomePage() {
   const [showButton, setShowButton] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  // Función para scroll a contacto
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact-section")
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" })
-    }
-  }
 
   // Manejo de links externos
   useEffect(() => {
@@ -81,18 +73,35 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-background" />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-4">
-            <Badge
-              variant="secondary"
-              className="text-sm px-4 py-2 bg-white/20 text-white border border-white/30 rounded-full font-semibold backdrop-blur-sm"
-            >
-              +35 años de experiencia
-            </Badge>
-          </div>
+          <Badge
+            variant="secondary"
+            className="mb-2 text-xl px-8 py-3 bg-white/20 text-white border-white/30 font-semibold"
+          >
+            +35 años de experiencia
+          </Badge>
           <h2 className="font-geist text-5xl md:text-7xl font-bold text-white mb-4">
             Mudanzas Vallasciani
           </h2>
-          <p className="font-manrope text-2xl md:text-4xl font-semibold text-white mb-6">
+          <p className="font-manrope text-base md:text-lg font-semibold text-gray-200 mb-6">
+            Empresa familiar de confianza en mudanzas nacionales e internacionales
+          </p>
+        </div>
+      </section>
+
+      <section className="relative min-h-screen flex items-center justify-center">
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-background" />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <Badge
+            variant="secondary"
+            className="mb-2 text-xl px-8 py-3 bg-white/20 text-white border-white/30 font-semibold"
+          >
+            +35 años de experiencia
+          </Badge>
+          <h2 className="font-geist text-5xl md:text-7xl font-bold text-white mb-4">
+            Mudanzas Vallasciani
+          </h2>
+          <p className="font-manrope text-base md:text-lg font-semibold text-gray-200 mb-6">
             Tu tranquilidad, nuestra prioridad
           </p>
           <p className="font-manrope text-base text-white/90 mb-6 max-w-[700px] mx-auto leading-relaxed">
@@ -137,16 +146,18 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-geist text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Nuestros Servicios
-            </h2>
-            <p className="font-manrope text-lg text-muted-foreground max-w-2xl mx-auto">
-              Transporte nacional e internacional puerta a puerta, con la seguridad de siempre
-            </p>
-          </div>
+
+<section className="py-20 bg-background">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="font-geist text-4xl md:text-5xl font-bold text-foreground mb-4">
+        Nuestros Servicios
+      </h2>
+      <p className="font-manrope text-lg text-muted-foreground max-w-2xl mx-auto">
+        Ofrecemos soluciones integrales para mudanzas Bahía Blanca, mudanzas Punta Alta y guardamuebles
+      </p>
+    </div>
+
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="group hover:shadow-lg transition-all duration-300">
@@ -155,8 +166,8 @@ export default function HomePage() {
                   <Truck className="h-8 w-8 text-primary" />
                 </div>
                 <h4 className="font-geist text-xl font-semibold mb-4">Mudanzas Nacionales e Internacionales</h4>
-                <p className="font-manrope text-lg text-muted-foreground">
-                  Transporte puerta a puerta, con la profesionalidad que nos caracteriza
+                <p className="font-manrope text-muted-foreground">
+                  Transporte seguro entre Bahía Blanca y Buenos Aires, y mudanzas nacionales e internacionales.
                 </p>
               </CardContent>
             </Card>
@@ -208,7 +219,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Resto del código se mantiene igual */}
       {/* Why Choose Us Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -425,34 +435,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-
-      {/* Botón de WhatsApp flotante */}
-      {showButton && (
-        <div className="fixed bottom-6 right-6 z-50 animate-in fade-in duration-300">
-          <a
-            href="https://wa.me/5492932635701?text=Hola%20Vallasciani%2C%20quiero%20pedir%20un%20presupuesto%20de%20mudanza."
-            target="_blank"
-            rel="noreferrer noopener"
-            className="flex items-center justify-center w-14 h-14 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors"
-            aria-label="Contactar por WhatsApp"
-          >
-            <MessageCircle className="h-7 w-7" />
-          </a>
-        </div>
-      )}
     </div>
   )
-}
-
-// Componentes adicionales necesarios
-function Badge({ variant, className, children }: any) {
-  return <span className={className}>{children}</span>
-}
-
-function Card({ className, children }: any) {
-  return <div className={`bg-card text-card-foreground rounded-lg border ${className}`}>{children}</div>
-}
-
-function CardContent({ className, children }: any) {
-  return <div className={className}>{children}</div>
 }
