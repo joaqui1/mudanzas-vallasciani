@@ -83,6 +83,41 @@ export default function RootLayout({
             `,
           }}
         />
+
+        {/* Meta de geolocalización para SEO local */}
+        <meta name="geo.region" content="AR-B" />
+        <meta name="geo.placename" content="Bahía Blanca" />
+        <meta name="geo.position" content="-38.718318;-62.266348" />
+        <meta name="ICBM" content="-38.718318, -62.266348" />
+
+        {/* Datos estructurados Schema.org para negocio local */}
+        <script
+          type="application/ld+json"
+          // Ajusta los campos si cambiás teléfono, logo o agregás dirección completa
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MovingCompany",
+              "name": "Mudanzas Vallasciani",
+              "url": "https://mudanzasvallasciani.com",
+              "telephone": "+542932635701",
+              "image": "https://mudanzasvallasciani.com/vallasciani-logo.png",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bahía Blanca",
+                "addressRegion": "Buenos Aires",
+                "addressCountry": "AR"
+              },
+              "areaServed": [
+                { "@type": "Place", "name": "Bahía Blanca" },
+                { "@type": "Place", "name": "Buenos Aires" },
+                { "@type": "Country", "name": "Argentina" }
+              ],
+              "description": "Empresa familiar con más de 35 años de experiencia en mudanzas locales y nacionales.",
+              "sameAs": []
+            }),
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>
