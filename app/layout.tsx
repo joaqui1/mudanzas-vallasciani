@@ -17,9 +17,9 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "Mudanzas Bahía Blanca y Mudanzas Bahía Blanca Buenos Aires | Vallasciani",
+  title: "Mudanzas Bahía Blanca | Buenos Aires",
   description:
-    "Mudanzas en Bahía Blanca y traslados Bahía Blanca – Buenos Aires. Transporte seguro, puntual y con más de 35 años de experiencia para hogares y empresas.",
+    "Mudanzas en Bahía Blanca y traslados Bahía Blanca – Buenos Aires. Servicio seguro, puntual y con más de 35 años de experiencia para hogares y empresas.",
   keywords:
     "mudanzas bahia blanca, mudanzas bahia blanca buenos aires, mudanzas nacionales bahia blanca, transporte puerta a puerta bahia blanca",
   icons: {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     apple: "/vallasciani-logo.png",
   },
   openGraph: {
-    title: "Mudanzas Bahía Blanca y Mudanzas Bahía Blanca Buenos Aires | Vallasciani",
+    title: "Mudanzas Bahía Blanca | Buenos Aires",
     description:
       "Mudanzas Vallasciani: especialistas en mudanzas Bahía Blanca y Bahía Blanca – Buenos Aires. Transporte seguro y confiable para hogares y empresas.",
     type: "website",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mudanzas Bahía Blanca y Mudanzas Bahía Blanca Buenos Aires | Vallasciani",
+    title: "Mudanzas Bahía Blanca | Buenos Aires",
     description:
       "Mudanzas Vallasciani: especialistas en mudanzas Bahía Blanca y Bahía Blanca – Buenos Aires. Transporte seguro y confiable para hogares y empresas.",
   },
@@ -71,9 +71,19 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${geist.variable} ${manrope.variable} antialiased`}>
       <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17522815085"></script>
+        {/* Preconnect para mejorar tiempos de carga de fuentes y scripts */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+        {/* Preload de imágenes críticas */}
+        <link rel="preload" as="image" href="/vallasciani-logo.png" fetchpriority="high" />
+        <link rel="preload" as="image" href="/vallasciani-truck-hero.png" fetchpriority="high" />
+
+        {/* Google tag (gtag.js) con defer para no bloquear render */}
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=AW-17522815085"></script>
         <script
+          defer
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -118,7 +128,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <h2>Mudanzas Bahía Blanca Buenos Aires</h2>
+        <h2>Mudanzas nacionales</h2>
+        {children}
+      </body>
     </html>
   )
 }

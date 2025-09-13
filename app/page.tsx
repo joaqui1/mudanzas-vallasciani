@@ -1,9 +1,10 @@
 "use client"
 import { useEffect, useState } from "react"
-import { MessageCircle, Package, Star, Phone, Mail, MapPin, CheckCircle, Truck, Shield, Users } from "lucide-react"
+import { MessageCircle, Package, Star, Phone, Mail, MapPin, CheckCircle, Truck, Shield, Users, Facebook } from "lucide-react"
 
 export default function HomePage() {
   const [showButton, setShowButton] = useState(false)
+  const [isButtonVisible, setIsButtonVisible] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Función para scroll a contacto
@@ -43,14 +44,20 @@ export default function HomePage() {
     }
   }, [])
 
-  // Mostrar botón después de hacer scroll
+  // Mostrar/ocultar botón después de hacer scroll con animación mejorada
   useEffect(() => {
     const handleScroll = () => {
-      setShowButton(window.scrollY > 200)
+      const shouldShow = window.scrollY > 200
+      if (shouldShow !== showButton) {
+        setShowButton(shouldShow)
+        // Pequeño retraso para permitir la transición CSS
+        setTimeout(() => setIsButtonVisible(shouldShow), 10)
+      }
     }
+    
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [showButton])
 
   // Smooth scroll para anchors internos
   useEffect(() => {
@@ -372,6 +379,17 @@ export default function HomePage() {
               <Mail className="h-5 w-5" />
               Email
             </a>
+            {/* Botón de Facebook agregado */}
+            <a
+              className="inline-flex items-center gap-2 bg-blue-600 text-white border-none px-6 py-4 rounded-xl no-underline shadow-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
+              href="https://www.facebook.com/MudanzasVallasciani"
+              target="_blank"
+              rel="noreferrer noopener"
+              data-external
+            >
+              <Facebook className="h-5 w-5" />
+              Facebook
+            </a>
           </div>
         </div>
       </section>
@@ -385,6 +403,19 @@ export default function HomePage() {
               <p className="font-manrope text-sm opacity-80 mb-4">
                 Empresa familiar con más de 35 años de experiencia en mudanzas nacionales e internacionales.
               </p>
+              {/* Enlace a Facebook en el footer */}
+              <div className="flex items-center gap-2 mt-4">
+                <a
+                  href="https://www.facebook.com/MudanzasVallasciani"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 text-background/80 hover:text-background transition-colors"
+                  data-external
+                >
+                  <Facebook className="h-5 w-5" />
+                  <span>Síguenos en Facebook</span>
+                </a>
+              </div>
             </div>
 
             <div>
@@ -426,20 +457,18 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* Botón de WhatsApp flotante */}
-      {showButton && (
-        <div className="fixed bottom-6 right-6 z-50 animate-in fade-in duration-300">
-          <a
-            href="https://wa.me/5492932635701?text=Hola%20Vallasciani%2C%20quiero%20pedir%20un%20presupuesto%20de%20mudanza."
-            target="_blank"
-            rel="noreferrer noopener"
-            className="flex items-center justify-center w-14 h-14 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors"
-            aria-label="Contactar por WhatsApp"
-          >
-            <MessageCircle className="h-7 w-7" />
-          </a>
-        </div>
-      )}
+      {/* Botón de WhatsApp flotante con animación mejorada */}
+      <div className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-in-out ${isButtonVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20 pointer-events-none'}`}>
+        <a
+          href="https://wa.me/5492932635701?text=Hola%20Vallasciani%2C%20quiero%20pedir%20un%20presupuesto%20de%20mudanza."
+          target="_blank"
+          rel="noreferrer noopener"
+          className="flex items-center justify-center w-14 h-14 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors"
+          aria-label="Contactar por WhatsApp"
+        >
+          <MessageCircle className="h-7 w-7" />
+        </a>
+      </div>
     </div>
   )
 }
