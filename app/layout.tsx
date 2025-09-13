@@ -128,11 +128,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
-        <h2>Mudanzas Bahía Blanca Buenos Aires</h2>
-        <h2>Mudanzas nacionales</h2>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
