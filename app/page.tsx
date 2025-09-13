@@ -379,17 +379,19 @@ export default function HomePage() {
               <Mail className="h-5 w-5" />
               Email
             </a>
-            {/* Botón de Facebook agregado */}
-            <a
-              className="inline-flex items-center gap-2 bg-blue-600 text-white border-none px-6 py-4 rounded-xl no-underline shadow-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
-              href="https://www.facebook.com/MudanzasVallasciani"
-              target="_blank"
-              rel="noreferrer noopener"
-              data-external
-            >
-              <Facebook className="h-5 w-5" />
-              Facebook
-            </a>
+            {/* Botón de Facebook igual al resto */}
+<a
+  className="inline-flex items-center gap-2 bg-white text-black border-none px-6 py-4 rounded-xl no-underline shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
+  href="https://www.facebook.com/MudanzasVallasciani"
+  target="_blank"
+  rel="noreferrer noopener"
+  data-external
+>
+  <Facebook className="h-5 w-5" />
+  Facebook
+</a>
+
+
           </div>
         </div>
       </section>
