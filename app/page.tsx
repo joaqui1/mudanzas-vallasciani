@@ -84,64 +84,73 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
-        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-background" />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-4">
-            <Badge
-              variant="secondary"
-              className="text-sm px-4 py-2 bg-white/20 text-white border border-white/30 rounded-full font-semibold backdrop-blur-sm"
-            >
-              +35 años de experiencia
-            </Badge>
-          </div>
-          <h2 className="font-geist text-5xl md:text-7xl font-bold text-white mb-4">
-            Mudanzas Vallasciani
-          </h2>
-          <p className="font-manrope text-2xl md:text-4xl font-semibold text-white mb-6">
-            Tu tranquilidad, nuestra prioridad
-          </p>
-          <p className="font-manrope text-base text-white/90 mb-6 max-w-[700px] mx-auto leading-relaxed">
-            Empresa familiar con más de 35 años de experiencia en mudanzas y guardamuebles
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-4xl mx-auto">
-            <button
-              onClick={() => {
-                const servicesSection = document.querySelector("section:nth-of-type(2)")
-                if (servicesSection) {
-                  servicesSection.scrollIntoView({ behavior: "smooth" })
-                }
-              }}
-              className="w-full sm:w-56 h-12 inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/30 px-4 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors cursor-pointer backdrop-blur-sm text-sm"
-              aria-label="Ir a nuestros servicios"
-            >
-              <Package className="h-4 w-4" />A qué nos dedicamos
-            </button>
-            <button
-              onClick={scrollToContact}
-              className="w-full sm:w-56 h-12 inline-flex items-center justify-center gap-2 bg-green-600 text-white border-none px-4 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors cursor-pointer shadow-lg text-sm"
-              aria-label="Ir a la sección de contacto"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Contáctanos
-            </button>
-            <button
-              onClick={() => {
-                const testimonialsSection = document.querySelector("section:nth-of-type(4)")
-                if (testimonialsSection) {
-                  testimonialsSection.scrollIntoView({ behavior: "smooth" })
-                }
-              }}
-              className="w-full sm:w-56 h-12 inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/30 px-4 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors cursor-pointer backdrop-blur-sm text-sm"
-              aria-label="Ir a testimonios de clientes"
-            >
-              <Star className="h-4 w-4" />
-              Lo que opinan quienes nos eligieron
-            </button>
-          </div>
-        </div>
-      </section>
+<section className="relative min-h-screen flex items-center justify-center">
+  <div className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-background" />
+  <div className="absolute inset-0 bg-black/40" />
+  <div className="relative z-10 container mx-auto px-4 text-center">
+    <div className="flex justify-center mb-4">
+      <Badge
+        variant="secondary"
+        className="text-sm px-4 py-2 bg-white/20 text-white border border-white/30 rounded-full font-semibold backdrop-blur-sm"
+      >
+        +35 años de experiencia
+      </Badge>
+    </div>
+
+    {/* H1 principal con keywords locales */}
+    <h1 className="font-geist text-5xl md:text-7xl font-bold text-white mb-4">
+      Mudanzas Bahía Blanca y Mudanzas Bahía Blanca Buenos Aires
+    </h1>
+
+    {/* Subtítulo con branding */}
+    <h2 className="font-manrope text-2xl md:text-4xl font-semibold text-white mb-6">
+      Mudanzas Vallasciani – tu tranquilidad, nuestra prioridad
+    </h2>
+
+    {/* Párrafo de apoyo con keywords */}
+    <p className="font-manrope text-base text-white/90 mb-6 max-w-[700px] mx-auto leading-relaxed">
+      Empresa familiar con más de 35 años de experiencia en mudanzas en Bahía Blanca y traslados Bahía Blanca – Buenos Aires. 
+      Servicio seguro, puntual y confiable para hogares y empresas.
+    </p>
+
+    <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-4xl mx-auto">
+      <button
+        onClick={() => {
+          const servicesSection = document.querySelector("section:nth-of-type(2)")
+          if (servicesSection) {
+            servicesSection.scrollIntoView({ behavior: "smooth" })
+          }
+        }}
+        className="w-full sm:w-56 h-12 inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/30 px-4 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors cursor-pointer backdrop-blur-sm text-sm"
+        aria-label="Ir a nuestros servicios"
+      >
+        <Package className="h-4 w-4" />A qué nos dedicamos
+      </button>
+      <button
+        onClick={scrollToContact}
+        className="w-full sm:w-56 h-12 inline-flex items-center justify-center gap-2 bg-green-600 text-white border-none px-4 py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors cursor-pointer shadow-lg text-sm"
+        aria-label="Ir a la sección de contacto"
+      >
+        <MessageCircle className="h-4 w-4" />
+        Contáctanos
+      </button>
+      <button
+        onClick={() => {
+          const testimonialsSection = document.querySelector("section:nth-of-type(4)")
+          if (testimonialsSection) {
+            testimonialsSection.scrollIntoView({ behavior: "smooth" })
+          }
+        }}
+        className="w-full sm:w-56 h-12 inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/30 px-4 py-3 rounded-xl font-medium hover:bg-white/20 transition-colors cursor-pointer backdrop-blur-sm text-sm"
+        aria-label="Ir a testimonios de clientes"
+      >
+        <Star className="h-4 w-4" />
+        Lo que opinan quienes nos eligieron
+      </button>
+    </div>
+  </div>
+</section>
+
 
       {/* Services Section */}
       <section className="py-20 bg-background">

@@ -80,16 +80,15 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/vallasciani-logo.png" fetchpriority="high" />
         <link rel="preload" as="image" href="/vallasciani-truck-hero.png" fetchpriority="high" />
 
-        {/* Google tag (gtag.js) con defer para no bloquear render */}
-        <script defer src="https://www.googletagmanager.com/gtag/js?id=AW-17522815085"></script>
+        {/* Google tag (gtag.js) actualizado */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17679022717"></script>
         <script
-          defer
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'AW-17522815085');
+              gtag('config', 'AW-17679022717');
             `,
           }}
         />
