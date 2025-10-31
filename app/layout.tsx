@@ -17,7 +17,7 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "Mudanzas Bahía Blanca | Buenos Aires",
+  title: "Mudanzas Bahía Blanca y Bahía Blanca Buenos Aires",
   description:
     "Mudanzas en Bahía Blanca y traslados Bahía Blanca – Buenos Aires. Servicio seguro, puntual y con más de 35 años de experiencia para hogares y empresas.",
   keywords:
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     apple: "/vallasciani-logo.png",
   },
   openGraph: {
-    title: "Mudanzas Bahía Blanca | Buenos Aires",
+    title: "Mudanzas Bahía Blanca y Bahía Blanca Buenos Aires",
     description:
       "Mudanzas Vallasciani: especialistas en mudanzas Bahía Blanca y Bahía Blanca – Buenos Aires. Transporte seguro y confiable para hogares y empresas.",
     type: "website",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mudanzas Bahía Blanca | Buenos Aires",
+    title: "Mudanzas Bahía Blanca y Bahía Blanca Buenos Aires",
     description:
       "Mudanzas Vallasciani: especialistas en mudanzas Bahía Blanca y Bahía Blanca – Buenos Aires. Transporte seguro y confiable para hogares y empresas.",
   },
@@ -71,6 +71,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${geist.variable} ${manrope.variable} antialiased`}>
       <head>
+        {/* Viewport para compatibilidad móvil */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         {/* Preconnect para mejorar tiempos de carga de fuentes y scripts */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />

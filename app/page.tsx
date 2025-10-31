@@ -157,8 +157,9 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-geist text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Nuestros Servicios
-            </h2>
+  Mudanzas nacionales e internacionales
+</h2>
+
             <p className="font-manrope text-lg text-muted-foreground max-w-2xl mx-auto">
               Transporte nacional e internacional puerta a puerta, con la seguridad de siempre
             </p>
