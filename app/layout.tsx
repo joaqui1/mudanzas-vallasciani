@@ -95,6 +95,20 @@ export default function RootLayout({
         />
         {/* End Google Tag Manager */}
 
+        {/* Google Ads Tag (AW-17679022717) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17679022717"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17679022717');
+            `,
+          }}
+        />
+        {/* End Google Ads Tag */}
+
         {/* Meta de geolocalización para SEO local */}
         <meta name="geo.region" content="AR-B" />
         <meta name="geo.placename" content="Bahía Blanca" />
