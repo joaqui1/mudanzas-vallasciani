@@ -493,10 +493,16 @@ export default function HomePage() {
       </div>
     </div>
 
+    // ... (todo el código anterior se mantiene igual)
+
     <div className="border-t border-background/20 pt-8 text-center">
       <p className="font-manrope text-sm opacity-80">
         © 2025 Mudanzas Vallasciani. Empresa familiar con más de 35 años de experiencia. Todos los derechos reservados.
       </p>
-    </div>
-  </div>
-</footer>
+    </div> {/* <-- 1. CIERRA EL DIV DEL BORDER-T */}
+  </div> {/* <-- 2. CIERRA EL DIV DEL CONTAINER */}
+</footer> {/* <-- 3. CIERRA EL FOOTER */}
+
+    </div> // CIERRA EL DIV PRINCIPAL
+  ) // CIERRA EL RETURN
+} // CIERRA EL COMPONENTE
