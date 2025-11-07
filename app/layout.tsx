@@ -74,7 +74,7 @@ export default function RootLayout({
         {/* Viewport para compatibilidad móvil */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        {/* Preconnect para mejorar tiempos de carga de fuentes y scripts */}
+        {/* Preconnect para mejorar tiempos de carga */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -95,7 +95,7 @@ export default function RootLayout({
         />
         {/* End Google Tag Manager */}
 
-        {/* Google Ads Tag (AW-17679022717) */}
+        {/* Google Ads Tag */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17679022717"></script>
         <script
           dangerouslySetInnerHTML={{
@@ -109,13 +109,13 @@ export default function RootLayout({
         />
         {/* End Google Ads Tag */}
 
-        {/* Meta de geolocalización para SEO local */}
+        {/* Meta de geolocalización */}
         <meta name="geo.region" content="AR-B" />
         <meta name="geo.placename" content="Bahía Blanca" />
         <meta name="geo.position" content="-38.718318;-62.266348" />
         <meta name="ICBM" content="-38.718318, -62.266348" />
 
-        {/* Datos estructurados Schema.org para negocio local */}
+        {/* Datos estructurados Schema.org */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
