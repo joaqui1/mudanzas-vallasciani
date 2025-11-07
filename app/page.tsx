@@ -1,3 +1,15 @@
+// Declarar gtag como global para que TypeScript no marque error
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
+const gtag = (...args: any[]) => {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag(...args);
+  }
+};
+
 "use client"
 import { useEffect, useState } from "react"
 import { MessageCircle, Package, Star, Phone, Mail, MapPin, CheckCircle, Truck, Shield, Users, Facebook } from "lucide-react"
@@ -359,141 +371,132 @@ export default function HomePage() {
       </section>
 
       {/* Contact & CTA Section */}
-      <section id="contact-section" className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="font-geist text-4xl md:text-5xl font-bold mb-6">Si te mudas, es con Mudanzas Vallasciani.</h1>
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            <a
-              className="inline-flex items-center gap-2 bg-white text-black border-none px-6 py-4 rounded-xl no-underline shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
-              href="tel:+542932635701"
-              data-external
-            >
-              <Phone className="h-5 w-5" />
-              Llamar
-            </a>
-            <a
-              className="inline-flex items-center gap-2 bg-white text-black border-none px-6 py-4 rounded-xl no-underline shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
-              href="https://wa.me/5492932635701?text=Hola%20Vallasciani%2C%20quiero%20pedir%20un%20presupuesto%20de%20mudanza."
-              target="_blank"
-              rel="noreferrer noopener"
-              data-external
-            >
-              <MessageCircle className="h-5 w-5" />
-              WhatsApp
-            </a>
-            <a
-              className="inline-flex items-center gap-2 bg-white text-black border-none px-6 py-4 rounded-xl no-underline shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
-              href="mailto:transvallasciani@hotmail.com?subject=Presupuesto%20de%20mudanza&body=Hola%20Vallasciani%2C%0AQuisiera%20pedir%20un%20presupuesto.%0A"
-              data-external
-            >
-              <Mail className="h-5 w-5" />
-              Email
-            </a>
-            {/* Botón de Facebook igual al resto */}
-<a
-  className="inline-flex items-center gap-2 bg-white text-black border-none px-6 py-4 rounded-xl no-underline shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
-  href="https://www.facebook.com/MudanzasVallasciani"
-  target="_blank"
-  rel="noreferrer noopener"
-  data-external
->
-  <Facebook className="h-5 w-5" />
-  Facebook
-</a>
+<section id="contact-section" className="py-20 bg-primary text-primary-foreground">
+  <div className="container mx-auto px-4 text-center">
+    <h1 className="font-geist text-4xl md:text-5xl font-bold mb-6">
+      Si te mudas, es con Mudanzas Vallasciani.
+    </h1>
+    <div className="flex flex-wrap gap-3 justify-center mb-12">
+      <a
+        className="inline-flex items-center gap-2 bg-white text-black px-6 py-4 rounded-xl shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
+        href="tel:+542932635701"
+        data-external
+        onClick={() => {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17679022717/Uo92CPX5trcbEP30ge5B',
+            'event_label': 'Llamada'
+          });
+        }}
+      >
+        <Phone className="h-5 w-5" />
+        Llamar
+      </a>
 
+      <a
+        className="inline-flex items-center gap-2 bg-white text-black px-6 py-4 rounded-xl shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
+        href="https://wa.me/5492932635701?text=Hola%20Vallasciani%2C%20quiero%20pedir%20un%20presupuesto%20de%20mudanza."
+        target="_blank"
+        rel="noreferrer noopener"
+        data-external
+        onClick={() => {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17679022717/Uo92CPX5trcbEP30ge5B',
+            'event_label': 'WhatsApp'
+          });
+        }}
+      >
+        <MessageCircle className="h-5 w-5" />
+        WhatsApp
+      </a>
 
+      <a
+        className="inline-flex items-center gap-2 bg-white text-black px-6 py-4 rounded-xl shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
+        href="mailto:wdvallasciani@gmail.com?subject=Presupuesto%20de%20mudanza&body=Hola%20Vallasciani%2C%0AQuisiera%20pedir%20un%20presupuesto.%0A"
+        data-external
+        onClick={() => {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-17679022717/Uo92CPX5trcbEP30ge5B',
+            'event_label': 'Email'
+          });
+        }}
+      >
+        <Mail className="h-5 w-5" />
+        Email
+      </a>
+
+      {/* Botón de Facebook (sin conversión) */}
+      <a
+        className="inline-flex items-center gap-2 bg-white text-black px-6 py-4 rounded-xl shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
+        href="https://www.facebook.com/MudanzasVallasciani"
+        target="_blank"
+        rel="noreferrer noopener"
+        data-external
+      >
+        <Facebook className="h-5 w-5" />
+        Facebook
+      </a>
+    </div>
+  </div>
+</section>
+
+{/* Footer */}
+<footer className="bg-foreground text-background py-12">
+  <div className="container mx-auto px-4">
+    <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 className="font-geist text-2xl font-bold mb-4">Mudanzas Vallasciani</h3>
+        <p className="font-manrope text-sm opacity-80 mb-4">
+          Empresa familiar con más de 35 años de experiencia en mudanzas nacionales e internacionales.
+        </p>
+        {/* Enlace a Facebook en el footer */}
+        <div className="flex items-center gap-2 mt-4">
+          <a
+            href="https://www.facebook.com/MudanzasVallasciani"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-2 text-background/80 hover:text-background transition-colors"
+            data-external
+          >
+            <Facebook className="h-5 w-5" />
+            <span>Síguenos en Facebook</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 className="font-geist font-semibold mb-4">Contacto</h4>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center gap-2">
+            <Phone className="h-4 w-4" />
+            <span>+54 9 2932 635701</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Mail className="h-4 w-4" />
+            <span>wdvallasciani@gmail.com</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <MapPin className="h-4 w-4" />
+            <span>Bahía Blanca, Argentina</span>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="font-geist text-2xl font-bold mb-4">Mudanzas Vallasciani</h3>
-              <p className="font-manrope text-sm opacity-80 mb-4">
-                Empresa familiar con más de 35 años de experiencia en mudanzas nacionales e internacionales.
-              </p>
-              {/* Enlace a Facebook en el footer */}
-              <div className="flex items-center gap-2 mt-4">
-                <a
-                  href="https://www.facebook.com/MudanzasVallasciani"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 text-background/80 hover:text-background transition-colors"
-                  data-external
-                >
-                  <Facebook className="h-5 w-5" />
-                  <span>Síguenos en Facebook</span>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-geist font-semibold mb-4">Contacto</h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
-                  <span>+54 9 2932 635701</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  <span>transvallasciani&#64;hotmail&#46;com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  <span>Bahía Blanca, Argentina</span>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-geist font-semibold mb-4">Servicios</h4>
-              <ul className="space-y-2 text-sm opacity-80">
-                <li>Mudanzas Nacionales</li>
-                <li>Mudanzas Internacionales</li>
-                <li>Embalaje Profesional</li>
-                <li>Guardamuebles</li>
-                <li>Logística Integral</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-background/20 pt-8 text-center">
-            <p className="font-manrope text-sm opacity-80">
-              © 2025 Mudanzas Vallasciani. Empresa familiar con más de 35 años de experiencia. Todos los derechos
-              reservados.
-            </p>
-          </div>
-        </div>
-      </footer>
-
-      {/* Botón de WhatsApp flotante con animación mejorada */}
-      <div className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-in-out ${isButtonVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20 pointer-events-none'}`}>
-        <a
-          href="https://wa.me/5492932635701?text=Hola%20Vallasciani%2C%20quiero%20pedir%20un%20presupuesto%20de%20mudanza."
-          target="_blank"
-          rel="noreferrer noopener"
-          className="flex items-center justify-center w-14 h-14 rounded-full bg-green-600 text-white shadow-lg hover:bg-green-700 transition-colors"
-          aria-label="Contactar por WhatsApp"
-        >
-          <MessageCircle className="h-7 w-7" />
-        </a>
+      <div>
+        <h4 className="font-geist font-semibold mb-4">Servicios</h4>
+        <ul className="space-y-2 text-sm opacity-80">
+          <li>Mudanzas Nacionales</li>
+          <li>Mudanzas Internacionales</li>
+          <li>Embalaje Profesional</li>
+          <li>Guardamuebles</li>
+          <li>Logística Integral</li>
+        </ul>
       </div>
     </div>
-  )
-}
 
-// Componentes adicionales necesarios
-function Badge({ variant, className, children }: any) {
-  return <span className={className}>{children}</span>
-}
-
-function Card({ className, children }: any) {
-  return <div className={`bg-card text-card-foreground rounded-lg border ${className}`}>{children}</div>
-}
-
-function CardContent({ className, children }: any) {
-  return <div className={className}>{children}</div>
-}
+    <div className="border-t border-background/20 pt-8 text-center">
+      <p className="font-manrope text-sm opacity-80">
+        © 2025 Mudanzas Vallasciani. Empresa familiar con más de 35 años de experiencia. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
