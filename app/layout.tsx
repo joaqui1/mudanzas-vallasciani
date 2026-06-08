@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     "mudanzas bahía blanca, fletes bahía blanca, mudanzas nacionales bahía blanca, guardamuebles punta alta, mudanzas vallasciani",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48" },
       { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-16.png", sizes: "16x16", type: "image/png" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
-    shortcut: "/favicon.svg",
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
@@ -93,8 +93,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/icon-48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/icon-96.png" type="image/png" sizes="96x96" />
 
         <link rel="preload" as="image" href="/vallasciani-logo.png" fetchPriority="high" />
 

@@ -15,7 +15,7 @@ export function SiteHeader({ active }: Props) {
             src="/vallasciani-logo.png"
             alt="Transporte y Mudanzas Vallasciani"
             width={1024}
-            height={306}
+            height={682}
             fetchPriority="high"
           />
         </Link>
