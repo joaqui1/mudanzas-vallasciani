@@ -161,34 +161,6 @@ export default function HomePage() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             <Link
-              href="/fletes-bahia-blanca"
-              className="group rounded-lg brand-card p-8 transition-all duration-300 hover:-translate-y-1"
-            >
-              <p className="font-manrope text-sm font-bold uppercase text-primary">Traslados locales</p>
-              <h3 className="mt-3 font-geist text-2xl font-bold text-foreground">Fletes en Bahía Blanca</h3>
-              <p className="mt-3 font-manrope leading-7 text-muted-foreground">
-                Cargas chicas, medianas y traslados puntuales en Bahía Blanca y zona.
-              </p>
-              <span className="mt-5 inline-flex font-manrope font-bold text-primary group-hover:underline">
-                Ver fletes
-              </span>
-            </Link>
-
-            <Link
-              href="/guardamuebles-punta-alta"
-              className="group rounded-lg brand-card p-8 transition-all duration-300 hover:-translate-y-1"
-            >
-              <p className="font-manrope text-sm font-bold uppercase text-primary">Almacenaje</p>
-              <h3 className="mt-3 font-geist text-2xl font-bold text-foreground">Guardamuebles en Punta Alta</h3>
-              <p className="mt-3 font-manrope leading-7 text-muted-foreground">
-                Espacios seguros y monitoreados para guardar muebles y cajas.
-              </p>
-              <span className="mt-5 inline-flex font-manrope font-bold text-primary group-hover:underline">
-                Ver guardamuebles
-              </span>
-            </Link>
-
-            <Link
               href="/mudanzas-bahia-blanca-buenos-aires"
               className="group rounded-lg brand-card p-8 transition-all duration-300 hover:-translate-y-1"
             >
