@@ -29,12 +29,14 @@ export const metadata: Metadata = {
     "mudanzas bahía blanca, fletes bahía blanca, mudanzas nacionales bahía blanca, guardamuebles punta alta, mudanzas vallasciani",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-16.png", sizes: "16x16", type: "image/png" },
       { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/favicon.svg",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {

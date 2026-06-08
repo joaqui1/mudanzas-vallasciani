@@ -11,7 +11,13 @@ export function SiteHeader({ active }: Props) {
     <header className="lnd-header">
       <div className="lnd-header__inner">
         <Link href="/" className="lnd-logo">
-          <img src="/vallasciani-logo.png" alt="Transporte y Mudanzas Vallasciani" />
+          <img
+            src="/vallasciani-logo.png"
+            alt="Transporte y Mudanzas Vallasciani"
+            width={1024}
+            height={306}
+            fetchPriority="high"
+          />
         </Link>
 
         <nav className="lnd-nav" aria-label="Principal">

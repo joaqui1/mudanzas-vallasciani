@@ -43,11 +43,18 @@
   padding-inline: 2rem;
 }
 
+.lnd-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
 .lnd-logo img {
   display: block;
-  height: 4.75rem;
-  width: auto;
-  max-width: 310px;
+  width: 11.5rem;
+  height: auto;
+  max-height: 4rem;
   object-fit: contain;
   object-position: left center;
 }
@@ -417,8 +424,8 @@
   }
 
   .lnd-logo img {
-    height: 3.5rem;
-    max-width: 240px;
+    width: 8.75rem;
+    max-height: 3.25rem;
   }
 
   .lnd-mobile-wa-btn {
