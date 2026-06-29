@@ -1,51 +1,71 @@
 import sharp from "sharp"
-import { join, dirname } from "path"
+import { readFile, writeFile, rm } from "fs/promises"
+import { dirname, join } from "path"
 import { fileURLToPath } from "url"
+import toIco from "to-ico"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const publicDir = join(__dirname, "..", "public")
 const logoSource = join(publicDir, "vallasciani-logo.png")
+const trimmedLogo = join(publicDir, "vallasciani-logo.trimmed.png")
 
 const white = { r: 255, g: 255, b: 255, alpha: 1 }
-const brandRed = { r: 196, g: 30, b: 30, alpha: 1 }
 
-/** Logo horizontal centrado en cuadrado — ideal para Google Search */
-async function logoSquare(size, outfile, background = white, fill = 0.9) {
-  const maxW = Math.max(1, Math.round(size * fill))
-  const resized = await sharp(logoSource)
-    .resize(maxW, null, {
+async function logoMarkBuffer(size) {
+  const mark = await sharp(logoSource)
+    .extract({ left: 0, top: 0, width: 235, height: 330 })
+    .trim({ background: "#ffffff", threshold: 12 })
+    .resize(Math.round(size * 0.76), Math.round(size * 0.76), {
       fit: "inside",
       withoutEnlargement: false,
       kernel: sharp.kernel.lanczos3,
     })
     .toBuffer()
 
-  await sharp({
+  return sharp({
     create: {
       width: size,
       height: size,
       channels: 4,
-      background,
+      background: white,
     },
   })
-    .composite([{ input: resized, gravity: "center" }])
+    .composite([{ input: mark, gravity: "center" }])
     .png()
-    .toFile(join(publicDir, outfile))
+    .toBuffer()
+}
+
+async function logoMark(size, outfile) {
+  await writeFile(join(publicDir, outfile), await logoMarkBuffer(size))
 }
 
 async function main() {
-  // Google Search pide favicon cuadrado, múltiplo de 48px, fondo sólido
-  await logoSquare(48, "icon-48.png", white, 0.96)
-  await logoSquare(96, "icon-96.png", white, 0.96)
-  await logoSquare(48, "favicon.ico", white, 0.96)
-  await logoSquare(32, "icon-32.png", white, 0.9)
-  await logoSquare(16, "icon-16.png", white, 0.88)
+  await sharp(logoSource)
+    .trim({ background: "#ffffff", threshold: 12 })
+    .png()
+    .toFile(trimmedLogo)
 
-  await logoSquare(180, "apple-touch-icon.png", white, 0.85)
-  await logoSquare(192, "icon-192.png", brandRed, 0.82)
-  await logoSquare(512, "icon-512.png", brandRed, 0.82)
+  await sharp(trimmedLogo).toFile(logoSource)
+  await rm(trimmedLogo, { force: true })
 
-  console.log("Favicons generados desde vallasciani-logo.png")
+  // Google Search pide favicons cuadrados, multiplos de 48px, con fondo solido.
+  await logoMark(16, "icon-16.png")
+  await logoMark(32, "icon-32.png")
+  await logoMark(48, "icon-48.png")
+  await logoMark(96, "icon-96.png")
+  await logoMark(180, "apple-touch-icon.png")
+  await logoMark(192, "icon-192.png")
+  await logoMark(342, "favicon-mark.png")
+  await logoMark(512, "icon-512.png")
+
+  const ico = await toIco([
+    await readFile(join(publicDir, "icon-16.png")),
+    await readFile(join(publicDir, "icon-32.png")),
+    await readFile(join(publicDir, "icon-48.png")),
+  ])
+  await writeFile(join(publicDir, "favicon.ico"), ico)
+
+  console.log("Favicons generados desde la marca Vallasciani")
 }
 
 main().catch((err) => {
