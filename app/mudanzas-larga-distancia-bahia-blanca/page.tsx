@@ -204,7 +204,7 @@ export default function MudanzasLargaDistanciaBahiaBlancaPage() {
 
       <PageHero
         heroImage="/vallasciani-truck-larga-distancia.png"
-        heroImageMobile="/vallasciani-truck-larga-distancia-mobile.png"
+        heroImageMobile="/vallasciani-truck-larga-distancia-mobile-focus.png"
         heroClassName="lnd-hero--larga-distancia"
         eyebrow="Traslados nacionales"
         title="Mudanzas de larga distancia desde Bahía Blanca"

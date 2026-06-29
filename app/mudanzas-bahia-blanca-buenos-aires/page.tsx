@@ -180,6 +180,8 @@ export default function MudanzasBahiaBlancaBuenosAiresPage() {
       <SiteHeader />
 
       <PageHero
+        heroImage="/vallasciani-truck-bahia-buenos-aires.png"
+        heroImageMobile="/vallasciani-truck-hero.png"
         eyebrow="Traslados de larga distancia"
         title="Mudanzas Bahia Blanca - Buenos Aires"
         subtitle="Puerta a puerta en ambos sentidos"

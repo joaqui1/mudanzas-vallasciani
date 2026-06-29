@@ -17,6 +17,7 @@ export function LandingTop({ onWhatsAppClick }: Props) {
 
       <PageHero
         heroImage="/vallasciani-truck-hero-home.png"
+        heroImageMobile="/vallasciani-truck-hero-home-mobile.png"
         heroImageAlt="Camión de mudanzas Vallasciani en Bahía Blanca"
         heroClassName="lnd-hero--home"
         eyebrow="Bahía Blanca — Buenos Aires"

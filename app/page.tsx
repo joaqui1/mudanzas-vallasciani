@@ -21,7 +21,6 @@ import {
   Star,
   Phone,
   Mail,
-  MapPin,
   CheckCircle,
   Truck,
   Shield,
@@ -31,7 +30,8 @@ import {
 import { LandingTop, WHATSAPP_URL } from "@/components/landing/LandingTop"
 import { SiteFooter } from "@/components/landing/SiteFooter"
 import { PHONE_URL } from "@/components/landing/constants"
-import { EMAIL, FACEBOOK_URL, GOOGLE_MAPS_URL } from "@/lib/site"
+import { EMAIL, FACEBOOK_URL } from "@/lib/site"
+import { customerReviews, getReviewInitial } from "@/app/opiniones/reviews"
 
 // Componentes simples para reemplazar los de shadcn/ui que faltan
 const Card = ({ className, children, ...props }: any) => (
@@ -40,6 +40,10 @@ const Card = ({ className, children, ...props }: any) => (
 
 const CardContent = ({ className, children }: any) => (
   <div className={className}>{children}</div>
+)
+
+const homeReviews = customerReviews.filter((review) =>
+  ["Francisco Filippa", "Luis Mayol", "Maria Ribes"].includes(review.name)
 )
 
 export default function HomePage() {
@@ -277,63 +281,31 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="flex flex-col h-full rounded-lg brand-card">
-              <CardContent className="p-8 flex flex-col h-full">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-accent fill-current" />
-                  ))}
-                </div>
-                <p className="font-manrope text-muted-foreground mb-6 flex-grow">
-                  "Me mudé de Bahía Blanca a Buenos Aires y todo 10 puntos. Puntuales y cuidadosos."
-                </p>
-                <div className="flex items-center gap-3 mt-auto">
-                  <img src="/mariana-photo.png" alt="Mariana López" className="w-10 h-10 rounded-full object-cover" />
-                  <div>
-                    <p className="font-geist font-semibold">Mariana López</p>
-                    <p className="font-manrope text-sm text-muted-foreground">Bahía Blanca</p>
+            {homeReviews.map((review) => (
+              <Card key={review.name} className="flex flex-col h-full rounded-lg brand-card">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <div className="flex mb-4">
+                    {Array.from({ length: review.rating }).map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-accent fill-current" />
+                    ))}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="flex flex-col h-full rounded-lg brand-card">
-              <CardContent className="p-8 flex flex-col h-full">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-accent fill-current" />
-                  ))}
-                </div>
-                <p className="font-manrope text-muted-foreground mb-6 flex-grow">
-                  "Necesitaba un guardamuebles por unos meses y la atención fue excelente, muy recomendable."
-                </p>
-                <div className="flex items-center gap-3 mt-auto">
-                  <img src="/facundo-photo.png" alt="Facundo Pereyra" className="w-10 h-10 rounded-full object-cover" />
-                  <div>
-                    <p className="font-geist font-semibold">Facundo Pereyra</p>
-                    <p className="font-manrope text-sm text-muted-foreground">Bahía Blanca</p>
+                  <p className="font-manrope text-muted-foreground mb-6 flex-grow">"{review.text}"</p>
+                  <div className="flex items-center gap-3 mt-auto">
+                    {review.avatar ? (
+                      <img src={review.avatar} alt={review.name} className="w-10 h-10 rounded-full object-cover" />
+                    ) : (
+                      <span className={`lnd-review-avatar lnd-review-avatar--${review.avatarTone ?? "orange"}`}>
+                        {getReviewInitial(review.name)}
+                      </span>
+                    )}
+                    <div>
+                      <p className="font-geist font-semibold">{review.name}</p>
+                      <p className="font-manrope text-sm text-muted-foreground">Fuente: {review.source}</p>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="flex flex-col h-full rounded-lg brand-card">
-              <CardContent className="p-8 flex flex-col h-full">
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-accent fill-current" />
-                  ))}
-                </div>
-                <p className="font-manrope text-muted-foreground mb-6 flex-grow">"Llegó todo muy bien."</p>
-                <div className="flex items-center gap-3 mt-auto">
-                  <img src="/laura-photo.png" alt="Laura Méndez" className="w-10 h-10 rounded-full object-cover" />
-                  <div>
-                    <p className="font-geist font-semibold">Laura Méndez</p>
-                    <p className="font-manrope text-sm text-muted-foreground">Neuquén</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -387,16 +359,6 @@ export default function HomePage() {
             >
               <Mail className="h-5 w-5" />
               Email
-            </a>
-
-            <a
-              className="inline-flex items-center gap-2 bg-white text-black px-6 py-4 rounded-xl shadow-lg font-semibold hover:bg-gray-100 transition-colors text-lg"
-              href={GOOGLE_MAPS_URL}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <MapPin className="h-5 w-5" />
-              Google Maps
             </a>
 
             <a
