@@ -85,7 +85,16 @@ export function SiteFooter() {
       </div>
 
       <div className="lnd-wrap lnd-footer__bottom">
-        <p>© 2026 Mudanzas Vallasciani. Todos los derechos reservados.</p>
+        <p>
+          © 2026 Mudanzas Vallasciani. Todos los derechos reservados.
+          <span aria-hidden="true"> · </span>
+          <Link
+            href="/desarrollo-web"
+            className="text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline"
+          >
+            Desarrollo web
+          </Link>
+        </p>
       </div>
     </footer>
   )
