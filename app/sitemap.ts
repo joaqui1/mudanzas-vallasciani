@@ -10,6 +10,7 @@ const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Si
     { path: "/mudanzas-larga-distancia-bahia-blanca", priority: 0.9, changeFrequency: "monthly" },
     { path: "/opiniones", priority: 0.8, changeFrequency: "monthly" },
     { path: "/contacto", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/desarrollo-web", priority: 0.3, changeFrequency: "yearly" },
   ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
